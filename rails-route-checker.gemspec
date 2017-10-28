@@ -9,17 +9,15 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Dave Allie']
   spec.email         = ['dave@daveallie.com']
 
-  spec.summary       = 'Blah'
-  spec.description   = 'Blah'
+  spec.summary       = 'A linting tool for your Rails routes'
+  spec.description   = 'A linting tool that helps you find any routes defined in your routes.rb file that ' \
+                       "don't have a corresponding controller action, and find any _path or _url calls that don't " \
+                       'have a corresponding route in the routes.rb file.'
   spec.homepage      = 'https://github.com/daveallie/rails-route-checker'
   spec.license       = 'MIT'
 
   spec.files         = Dir['exe/*'] + Dir['lib/**/*'] +
-                       ['Gemfile', 'rails-route-checker.gemspec']
-
-  #   `git ls-files -z`.split("\x0").reject do |f|
-  #   f.match(%r{^(test|spec|features)/})
-  # end
+                       %w[Gemfile rails-route-checker.gemspec]
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
