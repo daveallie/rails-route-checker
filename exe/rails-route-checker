@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'rails-route-checker'
+require 'optparse'
+
+options = {}
+OptionParser.new do |parser|
+  parser.banner = 'Usage: rails-route-checker [options]'
+
+  parser.on('-c', '--config CONFIG_FILE', 'Path to config file') do |path|
+    unless File.exist?(path)
+      puts 'Config file does not exist'
+      exit 1
+    end
+
+    options[:config_file] = path
+  end
+
+  parser.on('-h', '--help', 'Prints this help') do
+    puts parser
+    exit
+  end
+end.parse!
+
+options[:config_file] = '.rails-route-checker.yml' if File.exist?('.rails-route-checker.yml') && !options[:config_file]
+
+rrc = RailsRouteChecker::Runner.new(options)
+puts rrc.output
+exit rrc.issues? ? 1 : 0
