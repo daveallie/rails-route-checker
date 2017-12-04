@@ -1,7 +1,7 @@
 module RailsRouteChecker
   class AppInterface
     def initialize(**opts)
-      @options = opts
+      @options = { ignored_controllers: [], ignored_paths: [], ignored_path_whitelist: {} }.merge(opts)
     end
 
     def routes_without_actions
@@ -72,24 +72,47 @@ module RailsRouteChecker
     def generate_undef_controller_path_calls
       `find app/controllers -type f -iregex '.*\\.rb'`.split("\n").map do |filename|
         controller = controller_from_ruby_file(filename)
+        next unless controller # controller will be nil if it's an ignored controller
 
-        File.read(filename).each_line.each_with_index.map do |line, line_num|
-          next if line =~ /^\s*#/
-          next if line =~ /^\s*def\s/
+        items = []
 
-          matches = line.scan(/(([a-zA-Z][a-zA-Z0-9_]*)_(?:path|url))[^a-z0-9_]/)
-          ignores = line.scan(/(([a-zA-Z][a-zA-Z0-9_]*)_(?:path|url))(?: =|[!:])/).map(&:first)
-          ignores += line.scan(/[.@:_'"]([a-zA-Z][a-zA-Z0-9_]+_(?:path|url))[^a-z0-9_]/).map(&:first)
+        deep_iterator(Ripper.sexp(File.read(filename))) do |item, extra_data|
+          scope = extra_data[:scope]
+          next unless %i[vcall fcall].include?(scope[-2])
+          next unless scope[-1] == :@ident
+          next unless item.end_with?('_path', '_url')
+          next if match_in_whitelist?(filename, item)
+          next if match_defined_in_ruby?(controller, item)
+          line = extra_data[:position][0]
+          items << { file: filename, line: line, method: item }
+        end
 
-          matches.reject! { |match| ignores.include?(match[0]) }
+        items
+      end.flatten
+    end
 
-          matches.map do |match|
-            next if match_in_whitelist?(filename, match)
-            next if match_defined_in_ruby?(controller, match)
-            { file: filename, line: line_num + 1, method: match[0] }
+    def deep_iterator(list, current_scope = [], current_line_num = [], &block)
+      if list.is_a?(Array)
+        if list[0].is_a?(Symbol)
+          current_scope << list[0]
+
+          if list[-1].is_a?(Array) && list[-1].length == 2 && list[-1].all? { |item| item.is_a?(Fixnum) }
+            current_line_num = list[-1]
+            list = list[0..-2]
+          end
+
+          list[1..-1].each do |item|
+            deep_iterator(item, current_scope, current_line_num, &block)
+          end
+          current_scope.pop
+        else
+          list.each do |item|
+            deep_iterator(item, current_scope, current_line_num, &block)
           end
         end
-      end.flatten.compact
+      elsif !list.nil?
+        yield(list, { scope: current_scope, position: current_line_num })
+      end
     end
 
     def match_in_whitelist?(filename, match)
