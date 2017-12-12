@@ -49,6 +49,7 @@ module RailsRouteChecker
 
       files.map do |filename|
         controller = controller_from_view_file(filename)
+        next unless controller # controller will be nil if it's an ignored controller
 
         filter = lambda do |path_or_url|
           return false if match_in_whitelist?(filename, path_or_url)
@@ -74,6 +75,7 @@ module RailsRouteChecker
 
       files.map do |filename|
         controller = controller_from_view_file(filename)
+        next unless controller # controller will be nil if it's an ignored controller
 
         filter = lambda do |path_or_url|
           return false if match_in_whitelist?(filename, path_or_url)
@@ -127,20 +129,23 @@ module RailsRouteChecker
       split_path = filename.split('/')
       possible_controller_path = split_path[(split_path.index('app') + 2)..-2]
 
-      controller = nil
-      while controller.nil? && possible_controller_path.any?
-        if controller_information.include?(possible_controller_path.join('/'))
-          controller = controller_information[possible_controller_path.join('/')]
-        else
-          possible_controller_path = possible_controller_path[0..-2]
-        end
+      while possible_controller_path.any?
+        controller_name = possible_controller_path.join('/')
+        return controller_information[controller_name] if controller_exists?(controller_name)
+        possible_controller_path = possible_controller_path[0..-2]
       end
-      controller || controller_information['application']
+      controller_information['application']
     end
 
     def controller_from_ruby_file(filename)
-      controller_name = (filename.match(%r{app/controllers/(.*)_controller.rb}) || [])[1] || 'application'
-      controller_information[controller_name]
+      controller_name = (filename.match(%r{app/controllers/(.*)_controller.rb}) || [])[1]
+      return controller_information[controller_name] if controller_exists?(controller_name)
+      controller_information['application']
+    end
+
+    def controller_exists?(controller_name)
+      return false unless controller_name
+      File.exists?("app/controllers/#{controller_name}_controller.rb")
     end
   end
 end
