@@ -1,7 +1,6 @@
 require_relative 'haml_parser/document'
 require_relative 'haml_parser/tree/node'
 require_relative 'haml_parser/tree/filter_node'
-require_relative 'haml_parser/tree/null_node'
 require_relative 'haml_parser/tree/root_node'
 require_relative 'haml_parser/tree/script_node'
 require_relative 'haml_parser/tree/silent_script_node'
