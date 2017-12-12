@@ -52,10 +52,9 @@ module RailsRouteChecker
 
           yield
 
-          if start_block
-            @indent_level -= 1
-            add_line('end', node)
-          end
+          return unless start_block
+          @indent_level -= 1
+          add_line('end', node)
         end
 
         def visit_filter(node)
