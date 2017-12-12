@@ -42,7 +42,7 @@ module RailsRouteChecker
     end
 
     def generate_undef_view_path_calls_erb
-      files = `find app -type f -iregex '.*\\.erb'`.split("\n")
+      files = Dir['app/**/*.erb']
       return [] if files.none?
 
       RailsRouteChecker::Parsers::Loader.load_parser(:erb)
@@ -61,7 +61,7 @@ module RailsRouteChecker
     end
 
     def generate_undef_view_path_calls_haml
-      files = `find app -type f -iregex '.*\\.haml'`.split("\n")
+      files = Dir['app/**/*.haml']
       return [] if files.none?
 
       unless RailsRouteChecker::Parsers::Loader.haml_available?
@@ -86,7 +86,7 @@ module RailsRouteChecker
     end
 
     def generate_undef_controller_path_calls
-      files = `find app/controllers -type f -iregex '.*\\.rb'`.split("\n")
+      files = Dir['app/controllers/**/*.rb']
       return [] if files.none?
 
       RailsRouteChecker::Parsers::Loader.load_parser(:ruby)
