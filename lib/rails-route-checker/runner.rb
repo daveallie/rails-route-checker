@@ -47,7 +47,7 @@ module RailsRouteChecker
     def missing_routes_output
       [
         "The following #{issues[:missing_routes].count} url and path methods don't correspond to any route.",
-        *issues[:missing_routes].map { |line| " - #{line[:file]}:L#{line[:line]} - call to #{line[:method]}" }
+        *issues[:missing_routes].map { |line| " - #{line[:file]}:#{line[:line]} - call to #{line[:method]}" }
       ]
     end
   end
