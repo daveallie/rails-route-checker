@@ -26,8 +26,10 @@ Run `rails-route-checker` from your command line while in the root folder of you
 You may also specify a custom config file using the `-c` or `--config` flag. By default, the config file
 is search for at `.rails-route-checker.yml`. More information on the config file can be found below.
 
+`rails-route-checker` will scan Ruby, Haml and ERb files.
+
 ```
-rails-route-checker
+bundle exec rails-route-checker
 
 The following 1 routes are defined, but have no corresponding controller action.
 If you have recently added a route to routes.rb, make sure a matching action exists in the controller.
