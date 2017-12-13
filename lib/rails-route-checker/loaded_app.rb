@@ -41,13 +41,17 @@ module RailsRouteChecker
         next if controller.controller_path.start_with?('rails/')
 
         instance_methods = (controller.instance_methods.map(&:to_s) + controller.private_instance_methods.map(&:to_s))
+        lookup_context = ActionView::LookupContext.new(
+          controller._view_paths, {}, controller._prefixes
+        ) if controller.instance_methods.include?(:default_render)
 
         [
           controller.controller_path,
           {
             helpers: controller.helpers.methods.map(&:to_s),
             actions: controller.action_methods.to_a,
-            instance_methods: instance_methods.compact.uniq
+            instance_methods: instance_methods.compact.uniq,
+            lookup_context: lookup_context
           }
         ]
       end.compact.to_h

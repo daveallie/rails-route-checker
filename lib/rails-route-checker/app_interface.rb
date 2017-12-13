@@ -10,7 +10,12 @@ module RailsRouteChecker
         action = r.requirements[:action]
 
         next if options[:ignored_controllers].include?(controller)
-        next if controller_information.key?(controller) && controller_information[controller][:actions].include?(action)
+
+        if controller_information.key?(controller)
+          info = controller_information[controller]
+          next if info[:actions].include?(action)
+          next if info[:lookup_context] && info[:lookup_context].template_exists?("#{controller}/#{action}")
+        end
 
         {
           controller: controller,
