@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Handle implicit rendering by searching for views based on controller's lookup context - [@palkan](https://github.com/palkan)
+- Correct exit code if there is a single violation - [@ghiculescu](https://github.com/ghiculescu)
 
 ### Removed
 
