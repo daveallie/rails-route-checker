@@ -14,7 +14,7 @@ module RailsRouteChecker
     end
 
     def issues?
-      issues.values.flatten(1).count > 1
+      issues.values.flatten(1).count > 0
     end
 
     def output
