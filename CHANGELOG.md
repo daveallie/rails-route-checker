@@ -10,13 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
-- Handle implicit rendering by searching for views based on controller's lookup context - [@palkan](https://github.com/palkan)
-- Correct exit code if there is a single violation - [@ghiculescu](https://github.com/ghiculescu)
 
 ### Removed
 
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
+
+## [0.2.3] - 2018-04-15
+### Fixed
+- Handle implicit rendering by searching for views based on controller's lookup context - [@palkan](https://github.com/palkan)
+- Correct exit code if there is a single violation - [@ghiculescu](https://github.com/ghiculescu)
 
 ## [0.2.2] - 2017-12-13
 ### Changed
@@ -35,7 +38,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - AST parsing for Haml views (replaces regex searching)
 - AST parsing for ERb views
 
-[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.2...HEAD
+[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.3...HEAD
+[0.2.2]: https://github.com/daveallie/rails-route-checker/compare/0.2.2...0.2.3
 [0.2.2]: https://github.com/daveallie/rails-route-checker/compare/0.2.1...0.2.2
 [0.2.1]: https://github.com/daveallie/rails-route-checker/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/daveallie/rails-route-checker/compare/0.1.1...0.2.0
