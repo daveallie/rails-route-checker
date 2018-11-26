@@ -53,6 +53,7 @@ module RailsRouteChecker
           yield
 
           return unless start_block
+
           @indent_level -= 1
           add_line('end', node)
         end

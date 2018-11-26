@@ -21,6 +21,7 @@ module RailsRouteChecker
 
         def haml_available?
           return @haml_available if defined?(@haml_available)
+
           @haml_available = gem_installed?('haml')
         end
 
@@ -46,6 +47,7 @@ module RailsRouteChecker
         def if_unloaded(parser)
           @loaded_parsers ||= {}
           return false if @loaded_parsers[parser]
+
           yield
           @loaded_parsers[parser] = true
         end

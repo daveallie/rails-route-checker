@@ -10,12 +10,7 @@ module RailsRouteChecker
         action = r.requirements[:action]
 
         next if options[:ignored_controllers].include?(controller)
-
-        if controller_information.key?(controller)
-          info = controller_information[controller]
-          next if info[:actions].include?(action)
-          next if info[:lookup_context] && info[:lookup_context].template_exists?("#{controller}/#{action}")
-        end
+        next if controller_has_action?(controller, action)
 
         {
           controller: controller,
@@ -42,6 +37,16 @@ module RailsRouteChecker
       end
     end
 
+    def controller_has_action?(controller, action)
+      return false unless controller_information.key?(controller)
+
+      info = controller_information[controller]
+      return true if info[:actions].include?(action)
+      return true if info[:lookup_context] && info[:lookup_context].template_exists?("#{controller}/#{action}")
+
+      false
+    end
+
     def generate_undef_view_path_calls
       generate_undef_view_path_calls_erb + generate_undef_view_path_calls_haml
     end
@@ -59,6 +64,7 @@ module RailsRouteChecker
         filter = lambda do |path_or_url|
           return false if match_in_whitelist?(filename, path_or_url)
           return false if match_defined_in_view?(controller, path_or_url)
+
           true
         end
 
@@ -85,6 +91,7 @@ module RailsRouteChecker
         filter = lambda do |path_or_url|
           return false if match_in_whitelist?(filename, path_or_url)
           return false if match_defined_in_view?(controller, path_or_url)
+
           true
         end
 
@@ -105,6 +112,7 @@ module RailsRouteChecker
         filter = lambda do |path_or_url|
           return false if match_in_whitelist?(filename, path_or_url)
           return false if match_defined_in_ruby?(controller, path_or_url)
+
           return true
         end
 
@@ -115,18 +123,21 @@ module RailsRouteChecker
     def match_in_whitelist?(filename, path_or_url)
       possible_route_name = path_or_url.sub(/_(?:url|path)$/, '')
       return true if options[:ignored_paths].include?(possible_route_name)
+
       (options[:ignored_path_whitelist][filename] || []).include?(path_or_url)
     end
 
     def match_defined_in_view?(controller, path_or_url)
       possible_route_name = path_or_url.sub(/_(?:url|path)$/, '')
       return true if loaded_app.all_route_names.include?(possible_route_name)
+
       controller && controller[:helpers].include?(path_or_url)
     end
 
     def match_defined_in_ruby?(controller, path_or_url)
       possible_route_name = path_or_url.sub(/_(?:url|path)$/, '')
       return true if loaded_app.all_route_names.include?(possible_route_name)
+
       controller && controller[:instance_methods].include?(path_or_url)
     end
 
@@ -137,6 +148,7 @@ module RailsRouteChecker
       while possible_controller_path.any?
         controller_name = possible_controller_path.join('/')
         return controller_information[controller_name] if controller_exists?(controller_name)
+
         possible_controller_path = possible_controller_path[0..-2]
       end
       controller_information['application']
@@ -145,12 +157,14 @@ module RailsRouteChecker
     def controller_from_ruby_file(filename)
       controller_name = (filename.match(%r{app/controllers/(.*)_controller.rb}) || [])[1]
       return controller_information[controller_name] if controller_exists?(controller_name)
+
       controller_information['application']
     end
 
     def controller_exists?(controller_name)
       return false unless controller_name
-      File.exists?("app/controllers/#{controller_name}_controller.rb")
+
+      File.exist?("app/controllers/#{controller_name}_controller.rb")
     end
   end
 end

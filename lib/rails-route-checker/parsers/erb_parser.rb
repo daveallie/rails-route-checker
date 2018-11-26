@@ -5,23 +5,7 @@ module RailsRouteChecker
         def run(filename, **opts)
           file_source = opts[:source] || File.read(filename)
 
-          next_ruby_source_line_num = 1
-          ruby_source = ''
-          source_map = {}
-
-          file_source.split("\n").each_with_index do |line, line_num|
-            ruby_lines = process_line(line)
-            next unless ruby_lines.any?
-
-            ruby_source += ruby_lines.join("\n") + "\n"
-            ruby_lines.length.times do |i|
-              source_map[next_ruby_source_line_num + i] = line_num + 1
-            end
-            next_ruby_source_line_num += ruby_lines.length
-          end
-
-          opts[:source] = ruby_source
-          opts[:source_map] = source_map
+          opts.merge!(process_file(file_source))
 
           RailsRouteChecker::Parsers::RubyParser.run(filename, **opts)
         end
@@ -45,6 +29,28 @@ module RailsRouteChecker
             lookup_index = closing + 2
           end
           ruby_lines
+        end
+
+        def process_file(source)
+          next_ruby_source_line_num = 1
+          ruby_source = ''
+          source_map = {}
+
+          source.split("\n").each_with_index do |line, line_num|
+            ruby_lines = process_line(line)
+            next unless ruby_lines.any?
+
+            ruby_source += ruby_lines.join("\n") + "\n"
+            ruby_lines.length.times do |i|
+              source_map[next_ruby_source_line_num + i] = line_num + 1
+            end
+            next_ruby_source_line_num += ruby_lines.length
+          end
+
+          {
+            source: ruby_source,
+            source_map: source_map
+          }
         end
       end
     end

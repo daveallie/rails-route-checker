@@ -40,18 +40,13 @@ module RailsRouteChecker
       @controller_information ||= ActionController::Base.descendants.map do |controller|
         next if controller.controller_path.start_with?('rails/')
 
-        instance_methods = (controller.instance_methods.map(&:to_s) + controller.private_instance_methods.map(&:to_s))
-        lookup_context = ActionView::LookupContext.new(
-          controller._view_paths, {}, controller._prefixes
-        ) if controller.instance_methods.include?(:default_render)
-
         [
           controller.controller_path,
           {
             helpers: controller.helpers.methods.map(&:to_s),
             actions: controller.action_methods.to_a,
-            instance_methods: instance_methods.compact.uniq,
-            lookup_context: lookup_context
+            instance_methods: instance_methods(controller),
+            lookup_context: lookup_context(controller)
           }
         ]
       end.compact.to_h
@@ -60,6 +55,16 @@ module RailsRouteChecker
     private
 
     attr_reader :app
+
+    def lookup_context(controller)
+      return nil unless controller.instance_methods.include?(:default_render)
+
+      ActionView::LookupContext.new(controller._view_paths, {}, controller._prefixes)
+    end
+
+    def instance_methods(controller)
+      (controller.instance_methods.map(&:to_s) + controller.private_instance_methods.map(&:to_s)).compact.uniq
+    end
 
     def suppress_output
       begin
@@ -106,6 +111,7 @@ module RailsRouteChecker
       action = route.requirements[:action]
       return true unless controller && action
       return true if controller.start_with?('rails/')
+
       false
     end
   end

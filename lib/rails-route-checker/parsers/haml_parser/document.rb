@@ -21,9 +21,7 @@ module RailsRouteChecker
         private
 
         def process_tree(original_tree)
-          if Gem::Requirement.new('~> 4.0.0').satisfied_by?(Gem.loaded_specs['haml'].version)
-            original_tree.children.pop
-          end
+          original_tree.children.pop if Gem::Requirement.new('~> 4.0.0').satisfied_by?(Gem.loaded_specs['haml'].version)
 
           convert_tree(original_tree)
         end

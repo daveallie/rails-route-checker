@@ -18,7 +18,7 @@ module RailsRouteChecker
           end
 
           def attributes_source
-            @attr_source ||=
+            @attr_source ||= # rubocop:disable Naming/MemoizedInstanceVariableName
               begin
                 _explicit_tag, static_attrs, rest =
                   source_code.scan(/\A\s*(%[-:\w]+)?([-:\w\.\#]*)(.*)/m)[0]
