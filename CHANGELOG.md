@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
 
+## [0.2.4] - 2018-11-26
+### Fixed
+- Crash if using Haml 5
+
 ## [0.2.3] - 2018-04-15
 ### Fixed
 - Handle implicit rendering by searching for views based on controller's lookup context - [@palkan](https://github.com/palkan)
@@ -38,7 +42,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - AST parsing for Haml views (replaces regex searching)
 - AST parsing for ERb views
 
-[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.3...HEAD
+[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.4...HEAD
+[0.2.4]: https://github.com/daveallie/rails-route-checker/compare/0.2.3...0.2.4
 [0.2.3]: https://github.com/daveallie/rails-route-checker/compare/0.2.2...0.2.3
 [0.2.2]: https://github.com/daveallie/rails-route-checker/compare/0.2.1...0.2.2
 [0.2.1]: https://github.com/daveallie/rails-route-checker/compare/0.2.0...0.2.1
