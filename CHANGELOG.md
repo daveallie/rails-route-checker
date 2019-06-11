@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
 
+## [0.2.5] - 2019-06-11
+### Added
+- Support for Haml 5.1
+
 ## [0.2.4] - 2018-11-26
 ### Fixed
 - Crash if using Haml 5
