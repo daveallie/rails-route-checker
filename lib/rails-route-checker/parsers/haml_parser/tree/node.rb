@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsRouteChecker
   module Parsers
     module HamlParser
@@ -68,7 +70,7 @@ module RailsRouteChecker
             next_sibling = siblings.next(self)
             return next_sibling if next_sibling
 
-            parent.successor if parent
+            parent&.successor
           end
 
           def next_node

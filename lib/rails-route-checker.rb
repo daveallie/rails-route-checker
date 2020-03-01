@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'rails-route-checker/app_interface'
 require_relative 'rails-route-checker/config_file'
 require_relative 'rails-route-checker/loaded_app'

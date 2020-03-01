@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsRouteChecker
   class ConfigFile
     def initialize(filename)

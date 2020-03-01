@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsRouteChecker
   class LoadedApp
     def initialize
@@ -85,7 +87,7 @@ module RailsRouteChecker
     end
 
     def attempt_to_load_default_controllers
-      # rubocop:disable Lint/HandleExceptions
+      # rubocop:disable Lint/SuppressedException
       begin
         ::Rails::InfoController
       rescue NameError # ignored
@@ -98,7 +100,7 @@ module RailsRouteChecker
         ::Rails::MailersController
       rescue NameError # ignored
       end
-      # rubocop:enable Lint/HandleExceptions
+      # rubocop:enable Lint/SuppressedException
     end
 
     def reject_route?(route)

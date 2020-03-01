@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsRouteChecker
   class Runner
     def initialize(**opts)
@@ -14,7 +16,7 @@ module RailsRouteChecker
     end
 
     def issues?
-      issues.values.flatten(1).count > 0
+      issues.values.flatten(1).count.positive?
     end
 
     def output

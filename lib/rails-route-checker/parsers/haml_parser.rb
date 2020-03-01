@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'haml_parser/document'
 require_relative 'haml_parser/tree/node'
 require_relative 'haml_parser/tree/filter_node'

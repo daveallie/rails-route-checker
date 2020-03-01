@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsRouteChecker
   class AppInterface
     def initialize(**opts)
@@ -42,7 +44,7 @@ module RailsRouteChecker
 
       info = controller_information[controller]
       return true if info[:actions].include?(action)
-      return true if info[:lookup_context] && info[:lookup_context].template_exists?("#{controller}/#{action}")
+      return true if info[:lookup_context]&.template_exists?("#{controller}/#{action}")
 
       false
     end
