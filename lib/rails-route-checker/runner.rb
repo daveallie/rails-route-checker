@@ -33,7 +33,7 @@ module RailsRouteChecker
     private
 
     def app_interface
-      @app_interface ||= RailsRouteChecker::AppInterface.new(@options)
+      @app_interface ||= RailsRouteChecker::AppInterface.new(**@options)
     end
 
     def missing_actions_output

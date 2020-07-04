@@ -25,6 +25,6 @@ end.parse!
 
 options[:config_file] = '.rails-route-checker.yml' if File.exist?('.rails-route-checker.yml') && !options[:config_file]
 
-rrc = RailsRouteChecker::Runner.new(options)
+rrc = RailsRouteChecker::Runner.new(**options)
 puts rrc.output
 exit rrc.issues? ? 1 : 0
