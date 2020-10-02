@@ -14,7 +14,7 @@ module RailsRouteChecker
           options = Haml::Options.new
           original_tree = case version
                           when '~> 4.0', '~> 4.1' then Haml::Parser.new(@source, options).parse
-                          when '~> 5.0', '~> 5.1' then Haml::Parser.new(options).call(@source)
+                          when '~> 5.0', '~> 5.1', '~> 5.2' then Haml::Parser.new(options).call(@source)
                           else raise "Cannot handle Haml version: #{version}"
                           end
 
