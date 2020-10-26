@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
 
+## [0.2.7] - 2020-10-26
+### Added
+- Support for Haml 5.2
+
 ## [0.2.5] - 2019-06-11
 ### Added
 - Support for Haml 5.1
@@ -46,7 +50,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - AST parsing for Haml views (replaces regex searching)
 - AST parsing for ERb views
 
-[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.4...HEAD
+[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.7...HEAD
+[0.2.7]: https://github.com/daveallie/rails-route-checker/compare/0.2.5...0.2.7
+[0.2.5]: https://github.com/daveallie/rails-route-checker/compare/0.2.4...0.2.5
 [0.2.4]: https://github.com/daveallie/rails-route-checker/compare/0.2.3...0.2.4
 [0.2.3]: https://github.com/daveallie/rails-route-checker/compare/0.2.2...0.2.3
 [0.2.2]: https://github.com/daveallie/rails-route-checker/compare/0.2.1...0.2.2
