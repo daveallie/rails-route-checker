@@ -3,18 +3,29 @@
 module RailsRouteChecker
   class LoadedApp
     def initialize
-      @app = suppress_output do
-        app_base_path = Dir.pwd
+      app_base_path = Dir.pwd
+      suppress_output do
         require_relative "#{app_base_path}/config/boot"
-        require_relative "#{Dir.pwd}/config/environment"
+      end
 
-        a = Rails.application
-        a.eager_load!
+      begin
+        suppress_output do
+          require_relative "#{Dir.pwd}/config/environment"
+        end
+      rescue Exception => e
+        puts "Requiring your config/environment.rb file failed."
+        puts "This means that something raised while trying to start Rails."
+        puts ""
+        puts e.backtrace
+        raise(e)
+      end
+
+      suppress_output do
+        @app = Rails.application
+        @app.eager_load!
         attempt_to_load_default_controllers
-        a.reload_routes!
+        @app.reload_routes!
         Rails::Engine.subclasses.each(&:eager_load!)
-
-        a
       end
     end
 
@@ -25,7 +36,7 @@ module RailsRouteChecker
         reject_route?(r)
       end.uniq
 
-      return @routes unless @app.config.respond_to?(:assets)
+      return @routes unless app.config.respond_to?(:assets)
 
       use_spec = defined?(ActionDispatch::Journey::Route) || defined?(Journey::Route)
       @routes.reject do |route|
