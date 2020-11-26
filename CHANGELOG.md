@@ -16,9 +16,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
 
+## [0.2.8] - 2020-11-26
+### Changed
+- [#6](https://github.com/daveallie/rails-route-checker/pull/6) - Better error logging - [@ghiculescu](https://github.com/ghiculescu)
+
 ## [0.2.7] - 2020-10-26
 ### Added
-- Support for Haml 5.2
+- [#5](https://github.com/daveallie/rails-route-checker/pull/5) - Support for Haml 5.2 - [@ghiculescu](https://github.com/ghiculescu)
 
 ## [0.2.5] - 2019-06-11
 ### Added
@@ -30,8 +34,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.2.3] - 2018-04-15
 ### Fixed
-- Handle implicit rendering by searching for views based on controller's lookup context - [@palkan](https://github.com/palkan)
-- Correct exit code if there is a single violation - [@ghiculescu](https://github.com/ghiculescu)
+- [#3](https://github.com/daveallie/rails-route-checker/pull/3) - Handle implicit rendering by searching for views based on controller's lookup context - [@palkan](https://github.com/palkan)
+- [#4](https://github.com/daveallie/rails-route-checker/pull/4) - Correct exit code if there is a single violation - [@ghiculescu](https://github.com/ghiculescu)
 
 ## [0.2.2] - 2017-12-13
 ### Changed
@@ -50,7 +54,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - AST parsing for Haml views (replaces regex searching)
 - AST parsing for ERb views
 
-[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.7...HEAD
+[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.8...HEAD
+[0.2.8]: https://github.com/daveallie/rails-route-checker/compare/0.2.7...0.2.8
 [0.2.7]: https://github.com/daveallie/rails-route-checker/compare/0.2.5...0.2.7
 [0.2.5]: https://github.com/daveallie/rails-route-checker/compare/0.2.4...0.2.5
 [0.2.4]: https://github.com/daveallie/rails-route-checker/compare/0.2.3...0.2.4
