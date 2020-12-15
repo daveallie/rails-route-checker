@@ -51,7 +51,7 @@ module RailsRouteChecker
 
     def controller_information
       @controller_information ||= ActionController::Base.descendants.map do |controller|
-        next if controller.controller_path.start_with?('rails/')
+        next if controller.controller_path.nil? || controller.controller_path.start_with?('rails/')
 
         [
           controller.controller_path,
