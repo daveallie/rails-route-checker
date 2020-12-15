@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
 
+## [0.2.9] - 2020-11-26
+### Changed
+- [#7](https://github.com/daveallie/rails-route-checker/pull/7) - Support Rails 6.1 - [@ghiculescu](https://github.com/ghiculescu)
+
 ## [0.2.8] - 2020-11-26
 ### Changed
 - [#6](https://github.com/daveallie/rails-route-checker/pull/6) - Better error logging - [@ghiculescu](https://github.com/ghiculescu)
