@@ -23,8 +23,6 @@ module RailsRouteChecker
       suppress_output do
         @app = Rails.application
         @app.eager_load!
-        attempt_to_load_default_controllers
-        @app.reload_routes!
         Rails::Engine.subclasses.each(&:eager_load!)
       end
     end
@@ -95,23 +93,6 @@ module RailsRouteChecker
         $stderr.reopen(original_stderr)
       end
       retval
-    end
-
-    def attempt_to_load_default_controllers
-      # rubocop:disable Lint/SuppressedException
-      begin
-        ::Rails::InfoController
-      rescue NameError # ignored
-      end
-      begin
-        ::Rails::WelcomeController
-      rescue NameError # ignored
-      end
-      begin
-        ::Rails::MailersController
-      rescue NameError # ignored
-      end
-      # rubocop:enable Lint/SuppressedException
     end
 
     def reject_route?(route)
