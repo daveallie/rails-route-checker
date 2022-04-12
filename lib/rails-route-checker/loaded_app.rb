@@ -23,7 +23,6 @@ module RailsRouteChecker
       suppress_output do
         @app = Rails.application
         @app.eager_load!
-        @app.reload_routes!
         Rails::Engine.subclasses.each(&:eager_load!)
       end
     end
