@@ -1,0 +1,145 @@
+Started GET "/" for 127.0.0.1 at 2023-09-11 12:44:27 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.3ms | Allocations: 601)
+Completed 200 OK in 485ms (Views: 10.3ms | Allocations: 3398)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-11 12:45:07 +0200
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 346)
+Completed 200 OK in 253ms (Views: 3.5ms | Allocations: 1170)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-11 12:45:25 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 276ms (Views: 0.7ms | Allocations: 245)
+
+
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:46:31 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 28.2ms | Allocations: 1541)
+  Rendered layout layouts/application.html.erb (Duration: 45.4ms | Allocations: 2786)
+Completed 200 OK in 309ms (Views: 55.7ms | Allocations: 3656)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-09-11 12:46:31 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/sample/load_nonexistent_assets" for 127.0.0.1 at 2023-09-11 12:46:54 +0200
+Processing by SampleController#load_nonexistent_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_nonexistent_assets.html.erb within layouts/application
+  Rendered sample/load_nonexistent_assets.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1228)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 1292)
+Completed 500 Internal Server Error in 263ms (Allocations: 1547)
+
+
+  
+ActionView::Template::Error (The asset 'nonexistent.css' was not found in the load path.):
+    1: <%= stylesheet_link_tag "nonexistent" %>
+    2: 
+    3: <h1>Sample#load_nonexistent_assets</h1>
+    4: <p>Find me in app/views/sample/load_nonexistent_assets.html.erb</p>
+  
+app/views/sample/load_nonexistent_assets.html.erb:1
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:47:08 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 0.4ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 522)
+Completed 200 OK in 291ms (Views: 4.4ms | Allocations: 746)
+
+
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:49:10 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 0.3ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 510)
+Completed 200 OK in 316ms (Views: 2.7ms | Allocations: 793)
+
+
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:49:29 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 35.1ms | Allocations: 1786)
+  Rendered layout layouts/application.html.erb (Duration: 51.8ms | Allocations: 2441)
+Completed 200 OK in 533ms (Views: 64.8ms | Allocations: 5335)
+
+
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:49:45 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 0.2ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 516)
+Completed 200 OK in 245ms (Views: 1.5ms | Allocations: 742)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-11 12:49:51 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 355)
+Completed 200 OK in 212ms (Views: 1.8ms | Allocations: 1068)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-11 12:50:22 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fauresebast/.asdf/installs/ruby/2.7.6/lib/ruby/gems/2.7.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 346)
+Completed 200 OK in 248ms (Views: 2.4ms | Allocations: 1070)
+
+
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:50:32 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 27.3ms | Allocations: 1786)
+  Rendered layout layouts/application.html.erb (Duration: 40.9ms | Allocations: 2439)
+Completed 200 OK in 567ms (Views: 51.9ms | Allocations: 5332)
+
+
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:50:41 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 0.4ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 504)
+Completed 200 OK in 317ms (Views: 4.7ms | Allocations: 730)
+
+
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:50:47 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 29.3ms | Allocations: 1786)
+  Rendered layout layouts/application.html.erb (Duration: 46.6ms | Allocations: 2439)
+Completed 200 OK in 578ms (Views: 58.5ms | Allocations: 5333)
+
+
+Started GET "/fezg" for 127.0.0.1 at 2023-09-11 12:50:52 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/fezg"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-09-11 12:50:52 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/sample/load_real_assets" for 127.0.0.1 at 2023-09-11 12:51:01 +0200
+Processing by SampleController#load_real_assets as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sample/load_real_assets.html.erb within layouts/application
+  Rendered sample/load_real_assets.html.erb within layouts/application (Duration: 0.2ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 436)
+Completed 200 OK in 250ms (Views: 1.6ms | Allocations: 662)
+
+
