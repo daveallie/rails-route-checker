@@ -81,7 +81,13 @@ Feel free to fork this repo and open a PR. Alongside your changes, please add a 
 
 To test this gem in different envrionments with different gem version (such as the haml gem), we are using [Appraisal](https://github.com/thoughtbot/appraisal).
 
-To run the tests, you have to run them with the following command:
+First, you need to generate the differents Gemfiles, only needed for the tests:
+
+```bash
+bundle exec appraisal install
+```
+
+Then, to run the tests, you have to use the following command:
 
 ```bash
 bundle exec appraisal rake test
