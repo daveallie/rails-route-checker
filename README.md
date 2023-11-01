@@ -77,6 +77,22 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Feel free to fork this repo and open a PR. Alongside your changes, please add a line to `CHANGELOG.md`.
 
+### Testing
+
+To test this gem in different envrionments with different gem version (such as the haml gem), we are using [Appraisal](https://github.com/thoughtbot/appraisal).
+
+First, you need to generate the differents Gemfiles, only needed for the tests:
+
+```bash
+bundle exec appraisal install
+```
+
+Then, to run the tests, you have to use the following command:
+
+```bash
+bundle exec appraisal rake test
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

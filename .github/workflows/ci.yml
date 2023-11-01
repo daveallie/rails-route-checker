@@ -1,0 +1,29 @@
+name: Ruby CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby-version: ['3.1', '3.0', '2.7']
+        continue-on-error: [false]
+
+    name: ${{ format('Tests (Ruby {0})', matrix.ruby-version) }}
+    continue-on-error: ${{ matrix.continue-on-error }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Install dependencies
+        run: bundle install
+      - name: Install appraisal dependencies
+        run: bundle exec appraisal install
+      - name: Run tests
+        run: bundle exec appraisal rake test
