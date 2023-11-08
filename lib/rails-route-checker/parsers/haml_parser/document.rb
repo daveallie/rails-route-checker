@@ -11,11 +11,18 @@ module RailsRouteChecker
           @source_lines = @source.split(/\r\n|\r|\n/)
 
           version = Gem::Version.new(Haml::VERSION).approximate_recommendation
-          options = Haml::Options.new
+
           original_tree = case version
-                          when '~> 4.0', '~> 4.1' then Haml::Parser.new(@source, options).parse
-                          when '~> 5.0', '~> 5.1', '~> 5.2' then Haml::Parser.new(options).call(@source)
-                          else raise "Cannot handle Haml version: #{version}"
+                          when '~> 4.0', '~> 4.1'
+                            options = Haml::Options.new
+                            Haml::Parser.new(@source, options).parse
+                          when '~> 5.0', '~> 5.1', '~> 5.2'
+                            options = Haml::Options.new
+                            Haml::Parser.new(options).call(@source)
+                          when '~> 6.0', '~> 6.1', '~> 6.2'
+                            Haml::Parser.new({}).call(@source)
+                          else
+                            raise "Cannot handle Haml version: #{version}"
                           end
 
           @tree = process_tree(original_tree)
