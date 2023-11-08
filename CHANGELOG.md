@@ -16,6 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
 
+## [0.4.0]
+### Added
+- [#10](https://github.com/daveallie/rails-route-checker/pull/10) - Support for Haml 6.0, 6.1, 6.2 - [@fauresebast](https://github.com/fauresebast)
+
+### Chores
+- [#9](https://github.com/daveallie/rails-route-checker/pull/9) - Added basic CI tests - [@fauresebast](https://github.com/fauresebast)
+
+## [0.3.0]
+### Changed
+- [#8](https://github.com/daveallie/rails-route-checker/pull/8) - Ignore Rails default controllers - [@ghiculescu](https://github.com/ghiculescu)
+
 ## [0.2.9] - 2020-11-26
 ### Changed
 - [#7](https://github.com/daveallie/rails-route-checker/pull/7) - Support Rails 6.1 - [@ghiculescu](https://github.com/ghiculescu)
@@ -58,7 +69,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - AST parsing for Haml views (replaces regex searching)
 - AST parsing for ERb views
 
-[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.2.8...HEAD
+[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/daveallie/rails-route-checker/compare/0.3.0...0.4.0
+[0.3.0]: https://github.com/daveallie/rails-route-checker/compare/0.2.9...0.3.0
+[0.2.9]: https://github.com/daveallie/rails-route-checker/compare/0.2.8...0.2.9
 [0.2.8]: https://github.com/daveallie/rails-route-checker/compare/0.2.7...0.2.8
 [0.2.7]: https://github.com/daveallie/rails-route-checker/compare/0.2.5...0.2.7
 [0.2.5]: https://github.com/daveallie/rails-route-checker/compare/0.2.4...0.2.5
