@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 
+- Support for Haml 6 - [@stormmaster42](https://github.com/stormmaster42)
+
 ### Changed
 
 ### Fixed

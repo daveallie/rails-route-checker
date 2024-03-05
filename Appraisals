@@ -25,3 +25,7 @@ end
 appraise 'haml-6.2' do
   gem 'haml', '>= 6.2', '< 6.3'
 end
+
+appraise 'haml-6.3' do
+  gem 'haml', '>= 6.3', '< 6.4'
+end

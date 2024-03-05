@@ -19,7 +19,7 @@ module RailsRouteChecker
                           when '~> 5.0', '~> 5.1', '~> 5.2'
                             options = Haml::Options.new
                             Haml::Parser.new(options).call(@source)
-                          when '~> 6.0', '~> 6.1', '~> 6.2'
+                          when '~> 6.0', '~> 6.1', '~> 6.2', '~> 6.3'
                             Haml::Parser.new({}).call(@source)
                           else
                             raise "Cannot handle Haml version: #{version}"
