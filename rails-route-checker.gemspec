@@ -28,4 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.86'
   spec.add_development_dependency 'appraisal', '~> 2.5.0'
   spec.add_development_dependency 'minitest'
+  spec.add_development_dependency 'rails'
+  spec.add_development_dependency 'propshaft'
 end

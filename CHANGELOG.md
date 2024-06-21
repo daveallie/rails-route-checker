@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- Compatibility with `ActionController::API` - [@emfy0](https://github.com/emfy0)
+
 ### Removed
 
 > _Add your own contributions to the next release on a new line above this; please include your name too._

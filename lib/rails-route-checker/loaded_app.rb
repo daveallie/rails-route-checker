@@ -48,13 +48,24 @@ module RailsRouteChecker
     end
 
     def controller_information
-      @controller_information ||= ActionController::Base.descendants.map do |controller|
+      return @controller_information if @controller_information
+
+      base_controllers_descendants = [ActionController::Base, ActionController::API].flat_map(&:descendants)
+
+      @controller_information = base_controllers_descendants.map do |controller|
         next if controller.controller_path.nil? || controller.controller_path.start_with?('rails/')
+
+        controller_helper_methods =
+          if controller.respond_to?(:helpers)
+            controller.helpers.methods.map(&:to_s)
+          else
+            []
+          end
 
         [
           controller.controller_path,
           {
-            helpers: controller.helpers.methods.map(&:to_s),
+            helpers: controller_helper_methods,
             actions: controller.action_methods.to_a,
             instance_methods: instance_methods(controller),
             lookup_context: lookup_context(controller)
