@@ -7,18 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 
-- Support for Haml 6 - [@stormmaster42](https://github.com/stormmaster42)
-
 ### Changed
 
 ### Fixed
-
-- Compatibility with `ActionController::API` - [@emfy0](https://github.com/emfy0)
 
 ### Removed
 
 > _Add your own contributions to the next release on a new line above this; please include your name too._
 > _Please don't set a new version._
+
+## [0.6.0]
+### Fixed
+- [#12](https://github.com/daveallie/rails-route-checker/pull/10) - Compatibility with `ActionController::API` - [@emfy0](https://github.com/emfy0)
+
+## [0.5.0]
+### Added
+- [#11](https://github.com/daveallie/rails-route-checker/pull/11) - Support for Haml 6 - [@stormmaster42](https://github.com/stormmaster42)
 
 ## [0.4.0]
 ### Added
@@ -73,7 +77,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - AST parsing for Haml views (replaces regex searching)
 - AST parsing for ERb views
 
-[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/daveallie/rails-route-checker/compare/0.6.0...HEAD
+[0.6.0]: https://github.com/daveallie/rails-route-checker/compare/0.5.0...0.6.0
+[0.5.0]: https://github.com/daveallie/rails-route-checker/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/daveallie/rails-route-checker/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/daveallie/rails-route-checker/compare/0.2.9...0.3.0
 [0.2.9]: https://github.com/daveallie/rails-route-checker/compare/0.2.8...0.2.9
